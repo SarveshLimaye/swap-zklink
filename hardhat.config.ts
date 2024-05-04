@@ -4,7 +4,7 @@ require("@nomiclabs/hardhat-waffle");
 import "@matterlabs/hardhat-zksync";
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "zkSyncSepoliaTestnet",
+  defaultNetwork: "zkSyncNovaTestnet",
   networks: {
     zkSyncSepoliaTestnet: {
       url: "https://sepolia.era.zksync.dev",
@@ -48,10 +48,20 @@ const config: HardhatUserConfig = {
     },
   },
   solidity: {
-    version: "0.8.20",
-    mocha: {
-      timeout: 100000000,
-    },
+    compilers: [
+      {
+        version: "0.8.20",
+        settings: {
+          allowUnlimitedContractSize: true,
+        },
+      },
+      {
+        version: "0.4.19",
+        settings: {
+          allowUnlimitedContractSize: true,
+        },
+      },
+    ],
   },
 };
 

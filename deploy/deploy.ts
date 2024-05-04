@@ -13,13 +13,13 @@ export default async function () {
 
   console.log("Factory deployed to:", Factory.address);
 
-  const contractArtifactName1 = "NativeToken";
+  const contractArtifactName1 = "WETH9";
 
-  const Token = await deployContract(contractArtifactName1, []);
-  console.log("Token deployed to:", Token.address);
+  const Weth = await deployContract(contractArtifactName1, []);
+  console.log("Weth deployed to:", Weth.address);
 
   const contractArtifactName2 = "LinkSwapClone";
-  const constructorArguments2 = [Factory.address, Token.address];
+  const constructorArguments2 = [Factory.address, Weth.address];
   const LinkSwap = await deployContract(
     contractArtifactName2,
     constructorArguments2
